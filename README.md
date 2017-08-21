@@ -2,7 +2,7 @@
 
 A helm deployment package for a simple NGINX ingress service via an AWS ELB.
 
-## Usage
+## Usage
 
 First create an `override.yaml` file which contains the AWS ARN for the SSL certificate you wish the ELB to use.
 
