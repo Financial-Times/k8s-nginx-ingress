@@ -1,0 +1,12 @@
+service:
+  name: "" # The name of the service, should be defined in the specific app-configs folder
+  namespace: default
+  ssl:
+    aws_certificate_arn: "" # The AWS ARN for the ft.com Certificate - needs to be added at helm runtime via the CLI
+
+image:
+  repository: gcr.io/google_containers/nginx-ingress-controller
+  version: 0.9.0-beta.11
+  pullPolicy: Always
+
+replicaCount: 2

@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  X-Original-Request-URL: "$scheme://$host$request_uri"
+kind: ConfigMap
+metadata:
+  name: {{ .Values.service.name }}-custom-headers
+  namespace: {{ .Values.service.namespace }}
