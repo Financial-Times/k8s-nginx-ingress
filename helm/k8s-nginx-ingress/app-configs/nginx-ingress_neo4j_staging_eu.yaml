@@ -1,4 +1,0 @@
-service:
-  name: nginx-ingress
-  ssl:
-    aws_certificate_arn: "arn:aws:acm:eu-west-1:469211898354:certificate/4e431fdf-0a66-436a-a998-37dd61307447"
