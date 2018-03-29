@@ -1,0 +1,7 @@
+service:
+  name: nginx-ingress
+  ssl:
+    aws_certificate_arn: "arn:aws:acm:us-east-1:469211898354:certificate/bde07970-60f9-4683-a367-fdf05b276b0a"
+
+elb:
+  tags: "systemCode=pac,teamDL=universal.publishing.platform@ft.com,environment=p"
