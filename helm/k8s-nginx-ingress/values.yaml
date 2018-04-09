@@ -9,4 +9,7 @@ image:
   version: 0.9.0-beta.11
   pullPolicy: Always
 
+elbRegistrator:
+  image: "coco/coco-elb-dns-registrator:k8s_v0.0.4"
+
 replicaCount: 2
