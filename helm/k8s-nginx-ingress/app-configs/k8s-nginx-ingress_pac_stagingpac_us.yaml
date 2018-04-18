@@ -7,4 +7,4 @@ elb:
   tags: "systemCode=pac,teamDL=universal.publishing.platform@ft.com,environment=t"
 
 nginx_lb:
-  enabled: true
+  enabled: "true"

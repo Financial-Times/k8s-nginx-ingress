@@ -2,4 +2,4 @@ service:
   name: k8s-nginx-ingress
 
 nginx_lb:
-  enabled: false
+  enabled: "false"
