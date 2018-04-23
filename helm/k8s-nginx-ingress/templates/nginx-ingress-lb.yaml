@@ -16,7 +16,7 @@ spec:
     #  name: http
     - port: 443
       name: https
-      targetPort: 80
+      targetPort: 5556
       protocol: TCP
   selector:
     k8s-app: "{{ .Values.service.name }}-load-balancer"
