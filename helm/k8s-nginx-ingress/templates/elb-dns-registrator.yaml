@@ -1,4 +1,4 @@
----
+{{- if eq .Values.nginx_lb.enabled "true"}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -58,3 +58,4 @@ spec:
       - name: certificates-storage
         hostPath:
           path: /usr/share/ca-certificates
+{{- end }}
