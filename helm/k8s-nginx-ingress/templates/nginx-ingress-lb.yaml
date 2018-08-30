@@ -8,6 +8,12 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
     service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "{{ .Values.elb.tags }}"
+    {{- if ne .Values.elb.security_groups ""}}
+    service.beta.kubernetes.io/aws-load-balancer-extra-security-groups: "{{ .Values.elb.security_groups }}"
+    {{- end }}
+    {{- if eq .Values.elb.internal "true"}}
+    service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+    {{- end }}
 spec:
   type: LoadBalancer
   ports:

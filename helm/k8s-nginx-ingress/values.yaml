@@ -20,6 +20,12 @@ elb:
     # The AWS ARN for the ft.com Certificate - needs to be added at helm runtime via the CLI
     aws_certificate_arn: ""
 
+  # Additional security groups to attach to the ELB
+  security_groups: ""
+
+  # Flag indicating whether the ELB is internal or public to the internet.
+  internal: "false"
+
   # Additional tags to put on ELB
   tags: ""
 
