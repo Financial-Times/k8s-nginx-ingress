@@ -31,6 +31,7 @@ spec:
             - /nginx-ingress-controller
             - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
             - --configmap=$(POD_NAMESPACE)/{{ .Values.service.name }}-config
+            - '--ingress-class={{.Values.ingress_class}}'
           env:
             - name: POD_NAME
               valueFrom:

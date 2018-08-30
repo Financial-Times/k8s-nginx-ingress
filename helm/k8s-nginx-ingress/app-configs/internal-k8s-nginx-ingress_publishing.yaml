@@ -1,9 +1,6 @@
 service:
   name: k8s-nginx-ingress
 
-replicaCount: 0
-
 elb:
   enabled: "false"
   register_dns: "false"
-

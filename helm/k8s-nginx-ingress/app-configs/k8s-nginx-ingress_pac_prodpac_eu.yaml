@@ -1,10 +1,9 @@
 service:
   name: k8s-nginx-ingress
-  ssl:
-    aws_certificate_arn: "arn:aws:acm:eu-west-1:469211898354:certificate/4e431fdf-0a66-436a-a998-37dd61307447"
 
 elb:
+  ssl:
+    aws_certificate_arn: "arn:aws:acm:eu-west-1:469211898354:certificate/4e431fdf-0a66-436a-a998-37dd61307447"
   tags: "systemCode=pac,teamDL=universal.publishing.platform@ft.com,environment=p"
-
-nginx_lb:
   enabled: "true"
+  register_dns: "true"
