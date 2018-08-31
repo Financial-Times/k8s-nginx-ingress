@@ -1,8 +1,8 @@
 service:
   name: "" # The name of the service, should be defined in the specific app-configs folder
   namespace: default
-  ssl:
-    aws_certificate_arn: "" # The AWS ARN for the ft.com Certificate - needs to be added at helm runtime via the CLI
+
+ingress_class: nginx
 
 image:
   repository: gcr.io/google_containers/nginx-ingress-controller
@@ -11,5 +11,25 @@ image:
 
 elbRegistrator:
   image: "coco/coco-elb-dns-registrator:5.0.0"
+
+elb:
+  # Flag for creating a load balancer for the nginx controller
+  enabled: "true"
+
+  ssl:
+    # The AWS ARN for the ft.com Certificate - needs to be added at helm runtime via the CLI
+    aws_certificate_arn: ""
+
+  # Additional security groups to attach to the ELB
+  security_groups: ""
+
+  # Flag indicating whether the ELB is internal or public to the internet.
+  internal: "false"
+
+  # Additional tags to put on ELB
+  tags: ""
+
+  # Flag indicating if the DNS subdomain of the environment should be registered as a CNAME for the Nginx ELB
+  register_dns: "false"
 
 replicaCount: 2

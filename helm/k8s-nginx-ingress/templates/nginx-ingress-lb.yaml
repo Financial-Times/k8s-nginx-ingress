@@ -1,13 +1,19 @@
-{{- if eq .Values.nginx_lb.enabled "true"}}
+{{- if eq .Values.elb.enabled "true"}}
 apiVersion: v1
 kind: Service
 metadata:
   name: "{{ .Values.service.name }}"
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "{{ .Values.service.ssl.aws_certificate_arn }}"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "{{ .Values.elb.ssl.aws_certificate_arn }}"
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
     service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "{{ .Values.elb.tags }}"
+    {{- if ne .Values.elb.security_groups ""}}
+    service.beta.kubernetes.io/aws-load-balancer-extra-security-groups: "{{ .Values.elb.security_groups }}"
+    {{- end }}
+    {{- if eq .Values.elb.internal "true"}}
+    service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+    {{- end }}
 spec:
   type: LoadBalancer
   ports:

@@ -1,16 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: default-http-backend
+  name: {{ .Values.service.name }}-default-http-backend
   labels:
-    k8s-app: default-http-backend
+    k8s-app: {{ .Values.service.name }}-default-http-backend
   namespace: {{ .Values.service.namespace }}
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        k8s-app: default-http-backend
+        k8s-app: {{ .Values.service.name }}-default-http-backend
     spec:
       terminationGracePeriodSeconds: 60
       containers:
@@ -36,13 +36,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: default-http-backend
+  name: {{ .Values.service.name }}-default-http-backend
   namespace: {{ .Values.service.namespace }}
   labels:
-    k8s-app: default-http-backend
+    k8s-app: {{ .Values.service.name }}-default-http-backend
 spec:
   ports:
   - port: 80
     targetPort: 8080
   selector:
-    k8s-app: default-http-backend
+    k8s-app: {{ .Values.service.name }}-default-http-backend

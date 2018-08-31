@@ -1,9 +1,12 @@
 service:
-  name: k8s-nginx-ingress
+  name: internal-k8s-nginx-ingress
+ingress_class: nginx-internal
 
 elb:
   ssl:
     aws_certificate_arn: "arn:aws:acm:us-east-1:469211898354:certificate/bde07970-60f9-4683-a367-fdf05b276b0a"
   tags: "systemCode=pac,teamDL=universal.publishing.platform@ft.com,environment=t"
   enabled: "true"
-  register_dns: "true"
+  register_dns: "false"
+  internal: "true"
+  security_groups: "sg-71f03702"

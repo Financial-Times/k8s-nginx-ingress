@@ -1,8 +1,8 @@
-{{- if eq .Values.nginx_lb.enabled "true"}}
+{{- if eq .Values.elb.register_dns "true"}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Values.service.name }}-elb-registrator-job-{{ .Release.Revision}}"
+  name: "{{ .Values.service.name }}-elb-reg-job-{{ .Release.Revision}}-{ randAlpha 5 | lower}}"
   # This is what defines this resource as a hook. Without this line, the
   # job is considered part of the release.
   annotations:
