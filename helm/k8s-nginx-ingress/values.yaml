@@ -10,7 +10,7 @@ image:
   pullPolicy: Always
 
 elbRegistrator:
-  image: "coco/coco-elb-dns-registrator:5.0.0"
+  image: "coco/coco-elb-dns-registrator:5.0.1"
 
 elb:
   # Flag for creating a load balancer for the nginx controller
