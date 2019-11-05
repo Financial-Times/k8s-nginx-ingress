@@ -5,7 +5,7 @@ ingress_class: nginx-internal
 elb:
   enabled: "true"
   ssl:
-    aws_certificate_arn: "arn:aws:acm:eu-west-1:070529446553:certificate/53071112-759c-4875-97e2-c62425df1381"
+    aws_certificate_arn: "arn:aws:acm:eu-west-1:070529446553:certificate/a6ab3d87-cdae-4db4-838f-3dbce570ad47"
   tags: "systemCode=upp,teamDL=universal.publishing.platform@ft.com,environment=d"
   register_dns: "false"
   internal: "true"
