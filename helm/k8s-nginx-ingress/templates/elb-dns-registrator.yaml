@@ -27,6 +27,11 @@ spec:
             configMapKeyRef:
               name: global-config
               key: environment
+        - name: DomainZone
+          valueFrom:
+            configMapKeyRef:
+              name: global-config
+              key: dns_zone
         - name: KONSTRUCTOR_API_KEY
           valueFrom:
             secretKeyRef:
