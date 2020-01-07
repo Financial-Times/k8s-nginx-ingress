@@ -1,0 +1,48 @@
+{{- if eq .Values.elb.register_dns "true"}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Values.service.name }}-route53-elb-reg-job-{{ .Release.Revision}}-{{ randAlpha 5 | lower}}"
+  # This is what defines this resource as a hook. Without this line, the
+  # job is considered part of the release.
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+spec:
+  template:
+    metadata:
+      name: "{{ .Values.service.name }}-route53-elb-registrator"
+      annotations:
+        iam.amazonaws.com/role: arn:aws:iam::345152836601:role/route53-iam-dnsonlyroleuppprodE94AAA36-CAPB27QPX3K8
+    spec:
+      # Keep trying to register in DNS until we manage to do it
+      restartPolicy: OnFailure
+      containers:
+      - name: "{{ .Values.service.name }}-route53-elb-registrator"
+        image: "{{ .Values.route53_elb_registrator.image }}"
+        volumeMounts:
+        #We need the certificates for being able to make the DynDNS http call
+        - mountPath: /etc/ssl/certs
+          name: certificates-storage
+        env:
+        - name: HOSTED_ZONE_ID
+          valueFrom:
+            configMapKeyRef:
+              name: global-config
+              key: route53_hosted_zone_id
+        - name: DOMAINS
+          valueFrom:
+            configMapKeyRef:
+              name: global-config
+              key: environment
+        - name: DomainZone
+          valueFrom:
+            configMapKeyRef:
+              name: global-config
+              key: dns_zone
+        - name: K8S_LB_SERVICE
+          value: "{{ .Values.service.name }}"
+      volumes:
+      - name: certificates-storage
+        hostPath:
+          path: /usr/share/ca-certificates
+{{- end }}
