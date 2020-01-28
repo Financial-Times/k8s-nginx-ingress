@@ -45,3 +45,4 @@ spec:
       - name: certificates-storage
         hostPath:
           path: /etc/pki/ca-trust/extracted/pem
+{{- end }}
