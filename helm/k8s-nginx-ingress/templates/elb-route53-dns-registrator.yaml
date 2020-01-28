@@ -44,5 +44,4 @@ spec:
       volumes:
       - name: certificates-storage
         hostPath:
-          path: /usr/share/ca-certificates
-{{- end }}
+          path: /etc/pki/ca-trust/extracted/pem

@@ -2,6 +2,8 @@ service:
   name: "" # The name of the service, should be defined in the specific app-configs folder
   namespace: default
 
+eksCluster: false
+
 ingress_class: nginx
 
 image:
