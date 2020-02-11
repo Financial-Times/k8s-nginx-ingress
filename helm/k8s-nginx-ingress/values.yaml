@@ -9,9 +9,6 @@ image:
   version: 0.9.0-beta.11
   pullPolicy: Always
 
-elbRegistrator:
-  image: "coco/coco-elb-dns-registrator:5.1.1"
-
 route53_elb_registrator:
   image: "coco/upp-route53-elb-dns-registrator:1.0.1"
 
