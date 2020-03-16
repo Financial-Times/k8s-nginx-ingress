@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 description: Kubernetes NGINX Ingress Configured for AWS
 name: k8s-nginx-ingress
 version: 0.0.0
