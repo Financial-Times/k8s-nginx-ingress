@@ -9,4 +9,5 @@ elb:
   enabled: "true"
   register_dns: "false"
   internal: "true"
-  security_groups: "sg-16663e6e"
+# Removing the SG, since the LB service permits 443 from 0.0.0.0/0
+#  security_groups: "sg-16663e6e"
