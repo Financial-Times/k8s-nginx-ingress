@@ -1,8 +1,17 @@
+{{- if .Values.eksCluster }}
+apiVersion: apps/v1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Deployment
 metadata:
   name: {{ .Values.service.name }}-controller
 spec:
+{{- if .Values.eksCluster }}
+  selector:
+    matchLabels:
+      k8s-app: "{{ .Values.service.name }}-load-balancer"
+{{- end }}
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 3
   template:
