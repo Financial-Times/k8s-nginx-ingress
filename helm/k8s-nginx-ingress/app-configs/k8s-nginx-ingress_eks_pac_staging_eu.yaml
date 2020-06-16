@@ -8,4 +8,4 @@ elb:
     aws_certificate_arn: "arn:aws:acm:eu-west-1:469211898354:certificate/c9fc4ada-63ee-4951-b1ea-429ba586cbf7"
   tags: "systemCode=pac,teamDL=universal.publishing.platform@ft.com,environment=t"
   enabled: "true"
-  register_dns: "true"
+  register_dns: "false"
