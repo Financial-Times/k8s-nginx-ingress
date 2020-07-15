@@ -11,4 +11,3 @@ elb:
   tags: "systemCode=upp,teamDL=universal.publishing.platform@ft.com,environment=d"
   register_dns: "false"
   internal: "true"
-  security_groups: "sg-16663e6e"
