@@ -1,7 +1,6 @@
 service:
   name: k8s-nginx-ingress
 
-eksCluster: true
 
 elb:
   ssl:
