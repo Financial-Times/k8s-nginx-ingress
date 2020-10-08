@@ -2,8 +2,6 @@ service:
   name: internal-k8s-nginx-ingress
 ingress_class: nginx-internal
 
-eksCluster: true
-
 elb:
   enabled: "true"
   ssl:
